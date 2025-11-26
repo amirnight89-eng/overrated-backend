@@ -1,9 +1,14 @@
-const express = require("express");
-const cors = require("cors");
+import express from "express";
+import cors from "cors";
+import authRoutes from "./auth.js"; // important: .js extension in ESM
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+// Discord Auth Routes
+app.use("/auth/discord", authRoutes);
 
 // Simple test route
 app.get("/", (req, res) => {
